@@ -1,26 +1,33 @@
 import { useState } from "react";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Register = () => {
+  const navigate= useNavigate();
   const initialValue = {
     fullName: "",
     userName: "",
     place: "",
-    password: " ",
-    confirmPassword: " ",
+    password: "",
+    confirmPassword: "",
     email: "",
-    phone: null,
+    phone: "",
+    security:""
   }
   const [state, setState] = useState(initialValue);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await axios.post("http://localhost:3002/user/create-user", {
+    console.log(state);
+    const data = await axios.post("http://localhost:8000/user/create-user", {
       ...state,
     });
+    console.log("🚀 ~ handleSubmit ~ data:", data)
     setState(initialValue)
-    console.log("here");
-    console.log("🚀 ~ handleSubmit ~ data:", data);
+    if(data.data){navigate("/login")}
   };
+  const handleRepo= ()=>{
+    setState(initialValue);
+  }
   const handleChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
@@ -34,6 +41,7 @@ const Register = () => {
             <span>*</span>
             <input
               onChange={handleChange}
+              value={state.fullName}
               type="text"
               placeholder="Họ và tên"
               name="fullName"
@@ -43,6 +51,7 @@ const Register = () => {
             <span>*</span>
             <input
               onChange={handleChange}
+              value={state.userName}
               type="text"
               placeholder="Tên đăng nhập"
               name="userName"
@@ -54,6 +63,7 @@ const Register = () => {
             <input
               onChange={handleChange}
               type="text"
+              value={state.place}
               placeholder="Địa chỉ"
               name="place"
             />
@@ -62,6 +72,7 @@ const Register = () => {
             <span>*</span>
             <input
               onChange={handleChange}
+              value={state.password}
               type="password"
               placeholder="Mật khẩu"
               name="password"
@@ -72,6 +83,7 @@ const Register = () => {
             <input
               onChange={handleChange}
               type="email"
+              value={state.email}
               placeholder="Email"
               name="email"
             />
@@ -82,6 +94,7 @@ const Register = () => {
             <input
               onChange={handleChange}
               type="password"
+              value={state.confirmPassword}
               placeholder="Xác nhận mật khẩu"
               name="confirmPassword"
             />
@@ -91,17 +104,21 @@ const Register = () => {
             <input
               onChange={handleChange}
               type="number"
+              value={state.phone}
               placeholder="Số điện thoại"
               name="phone"
             />
           </div>
-          <div className="input-register">
+          <div className="input-register" style={{justifyContent:"unset"}}>
             <span>*</span>
-            <div>
+            <div className="security">
               <input
+              onChange={handleChange}
                 style={{ width: "90px" }}
                 type="text"
+                value={state.security}
                 placeholder="Mã bảo mật "
+                name="security"
               ></input>
               <img
                 src="https://demo037058.web30s.vn/captcha/create?background=transparent&type=all&font_color=495057&length_text=5&font_family=&key=register-member"
@@ -130,7 +147,7 @@ const Register = () => {
             <button type="submit">đăng ký</button>
           </div>
           <div className="button-register right">
-            <button>làm lại</button>
+            <button onClick={handleRepo}>làm lại</button>
           </div>
         </div>
       </form>

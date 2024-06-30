@@ -113,6 +113,7 @@
 .register .left {
   display: flex;
   justify-content: flex-end;
+  padding-right: 20px;
 }
 .register .right {
   display: flex;
@@ -131,6 +132,9 @@
 }
 .input-register img {
   margin: auto;
-  width: 100px;
   height: 30px;
+}
+.input-register .security{
+  display: flex;
+  width: inherit;
 }

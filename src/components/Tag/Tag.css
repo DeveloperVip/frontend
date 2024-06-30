@@ -1,0 +1,7 @@
+/* Tag.css */
+.link-hover:hover {
+    background-color: #D20062 !important; /* Màu nền khi hover */
+    color: #fff !important; /* Màu chữ khi hover */
+    transition: all 300ms ease;
+  }
+  

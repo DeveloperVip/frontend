@@ -6,19 +6,56 @@ import axios from "axios";
 import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Register from "../Register/Register";
+import startTokenMonitoring from "../../services/CheckToken";
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState([]);
   const [password, setPassword] = useState([]);
+  const [errors, setError] = useState("");
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(userName, "  ", password);
-    const data = await axios.post("http://localhost:3001/login", {
-      userName,
-      password,
-    });
-    console.log("data", data);
+    try {
+      e.preventDefault();
+      console.log(userName, "  ", password);
+      const response = await axios.post("http://localhost:8000/user/login", {
+        userName,
+        password,
+      });
+      console.log(response.data);
+      if (response.data) {
+        // Lấy đường dẫn lưu trữ
+        startTokenMonitoring();
+        const redirectPath = localStorage.getItem("redirectPath") || "/home";
+        localStorage.removeItem("redirectPath"); // Xóa đường dẫn lưu trữ sau khi sử dụng
+        localStorage.setItem("token_user", response.data);
+        setToken(response.data);
+        navigate(redirectPath); // Điều hướng đến đường dẫn trước đó hoặc trang chủ
+        setError("");
+      }
+      console.log("data", response);
+    } catch (error) {
+      console.log(error);
+      if (error.response) {
+        if (error.response.status === 400) {
+          alert(
+            "Đăng nhập thất bại, vui lòng kiểm tra lại tên đăng nhập và mật khẩu."
+          );
+          setError("Invalid username or password");
+        } else if (error.response.status === 401) {
+          alert(
+            "Đăng nhập thất bại, vui lòng kiểm tra lại tên đăng nhập và mật khẩu."
+          );
+          setError("Unauthorized access");
+        } else {
+          alert(
+            "Đăng nhập thất bại, vui lòng kiểm tra lại tên đăng nhập và mật khẩu."
+          );
+          setError("An error occurred. Please try again.");
+        }
+      } else {
+        setError("Network error. Please check your connection.");
+      }
+    }
   };
   const handleChange = (e) => {
     const target = e.target;
@@ -51,7 +88,7 @@ const Login = () => {
           </div>
         </div>
         <button type="submit" className="btn btn-success">
-          đăng nhập
+          Đăng nhập
         </button>
       </form>
       <div className="forgot-login">
@@ -64,7 +101,7 @@ const Login = () => {
           <span style={{ color: "black" }}>- Bạn chưa có tài khoản? </span>
         </h4>
         <h4>
-          <Link onClick={navigate("/register")}>Đăng ký ngay</Link>
+          <Link onClick={() => navigate("/register")}>Đăng ký ngay</Link>
         </h4>
       </div>
       <div className="another-login">

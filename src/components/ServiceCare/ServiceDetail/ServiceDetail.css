@@ -1,0 +1,10 @@
+.book-service .form{
+    width: 60%;
+    margin: 0 auto;
+}
+.book-service .form button{
+    width: 20%;
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+}

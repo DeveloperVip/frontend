@@ -1,0 +1,10 @@
+.pagination{
+    width: 60%;
+    margin: 0 auto;
+}
+.pagination a:hover{
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: var(--bs-pagination-active-bg);
+    border-color: var(--bs-pagination-active-border-color)
+}

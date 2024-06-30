@@ -1,0 +1,46 @@
+.path-user{
+  height: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    
+}
+.path-user{
+  /* z-index: 999; */
+}
+.path-user .options {
+  /* Cài đặt ban đầu */
+  width: 100px;
+  height: auto;
+  float: inherit;
+  position: absolute;
+  top: 40px;
+  background-color: white; /* Màu nền của phần hiển thị */
+  color: black;
+  border: 1px solid #ccc; /* Viền của phần hiển thị */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho phần hiển thị */
+  z-index: 999;
+  display: none;
+  transition: display 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+}
+
+.path-user:hover .options {
+  /* Hiển thị options khi hover vào .path-user */
+  display: block;
+}
+
+.path-user .options .option {
+  cursor: pointer; /* Biến con trỏ thành dấu nhấp chuột khi hover */
+  margin-bottom: 5px;
+  color: black;
+}
+
+.path-user .options .option:hover {
+  background-color: #f0f0f0; /* Hiển thị màu nền khác khi hover */
+  color:  var(--c-1625121945268, #D20062);
+}

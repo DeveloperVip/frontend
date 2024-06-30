@@ -1,0 +1,101 @@
+.card {
+    padding: 10px 0;
+    position: relative;
+    border: none;
+    scale: 1;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0px 0px 56px -3px rgba(0, 0, 0, 0.1);
+}
+.card .card-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    overflow: hidden;
+    padding: 10px;
+}
+.card img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+    overflow: hidden;
+}.card .card-body{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    justify-content: space-evenly;
+}
+.card .card-body a {
+    height: auto;
+}
+.card .card-body h6{
+    margin: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+.card .card-body a:hover{
+    background-color: var(--c-1625121945268, #D20062);
+}
+.card  p{
+    text-align: center;
+    padding: 2px;
+}
+.card .button-group{
+    width: 28px;
+    height: auto;
+    top: 40%;
+    left: 0;
+    transform: translateX(-28px) translateY(calc(-50% - 42px));
+    opacity: 0;
+    transition: all 300ms ease;
+    display: block;
+    position: absolute;
+}
+
+.card:hover .button-group{
+    opacity: 1;
+    left: 0;
+    transform:translateY(calc(-50% - 42px));
+    transition: all 300ms ease;
+}
+.card .button-group .btn{
+    width: 28px;
+    color: var(--c-1625122094516, #fff);
+    font-size: 16px;
+    text-align: center;
+    background-color: var(--c-1625122300820, #bbb);
+    top: unset;
+    left: unset;
+    height: 28px;
+    line-height: 28px;
+    padding: 5px 0;
+    margin: 0px 0px 10px;
+    display: inline-flex;
+    position: relative;
+    border-radius: 5px;
+}
+.card .button-group .btn svg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card .button-group .basket:hover{
+    background-color: var(--c-1625121945268, #D20062);
+    color: black;
+}
+.card .button-group .heart:hover{
+    background-color: var(--c-1625121945268, #D20062);
+    color: black;
+}
+.card .button-group .expand:hover{
+    background-color: var(--c-1625121945268, #D20062);
+    color: black;
+}
+.card .button-group .eye:hover{
+    background-color: var(--c-1625121945268, #D20062);
+    color: black;
+}

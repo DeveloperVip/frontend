@@ -1,0 +1,53 @@
+/* EmailInput.css */
+.give-promotion{
+    height: auto;
+    padding: 80px 15px 40px;
+    background-image: url(	https://demo037058.web30s.vn/datafiles/web30s/upload/images/7000-7100/30S-03-7058/bg.png);
+    background-position: 50% 50%;
+    display: block;
+}
+.give-promotion .form{
+    height: 200px;
+    background-color: white;
+    position: relative;
+}
+.email-input-container {
+    width: calc(100% - 100px);
+    height: 60px;
+    padding: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    border-radius: 30px;
+    color: #838383;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-color: #E1E1E1;
+    --background-color: #fff;
+    display: block;
+  }
+  
+  .email-input {
+    border-radius: 30px;
+    padding: 10px;
+  }
+  
+  .submit-button {
+    position: absolute;
+    right: 0;
+    width: 350px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  
+  .submit-button:hover {
+    background-color: #d20062;
+  }
+  
